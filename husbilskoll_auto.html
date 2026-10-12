@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Husbilskoll – slutpriser</title>
+<style>
+:root{--navy:#152b3c;--blue:#24536b;--gold:#e4b95d;--bg:#f3f6f8;--ink:#1d2933;--muted:#667784;--line:#dbe3e8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+header{background:linear-gradient(120deg,#122637,#24536b);color:#fff;padding:28px 18px}header .wrap,main{max-width:1100px;margin:auto}h1{margin:0;font-size:clamp(25px,4vw,36px)}header p{margin:8px 0 0;color:#d9e6ed}
+main{padding:18px;display:grid;gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px #132b3b0a}
+h2{font-size:19px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:13px;font-weight:650;color:#41515d}input,select{width:100%;border:1px solid #cbd6dd;border-radius:9px;padding:11px 10px;background:#fff;font:inherit;min-width:0}button,.button{border:0;border-radius:9px;padding:11px 14px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--navy);color:white}.secondary{background:#eaf0f4;color:var(--navy)}.gold{background:var(--gold);color:#2b2b2b}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.hint{font-size:13px;color:var(--muted);margin:10px 0 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:13px;background:#f5f8fa;border-radius:11px}.stat small{display:block;color:var(--muted)}.stat strong{font-size:23px;display:block;margin-top:3px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:750px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#60717e;background:#f8fafb}td a{color:#185e83}.empty{text-align:center;color:var(--muted);padding:24px}.pill{display:inline-block;padding:3px 8px;border-radius:20px;background:#e8f3ec;color:#24653e;font-size:12px;font-weight:700}.warning{background:#fff7e4;border:1px solid #f0d58d;padding:12px;border-radius:10px;font-size:13px}.danger{color:#a23434}.smallbtn{padding:6px 9px;font-size:12px}.footer{font-size:12px;color:var(--muted);text-align:center;padding:4px 12px 24px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}.card{padding:14px}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><div class="wrap"><h1>🚐 Husbilskoll</h1><p>Sök efter avslutade auktioner och bygg din egen databas med verkliga slutpriser.</p></div></header>
+<main>
+<section class="card">
+<h2>1. Sök på webben</h2>
+<div class="grid">
+<div class="field"><label for="make">Tillverkare</label><input id="make" placeholder="t.ex. Bürstner"></div>
+<div class="field"><label for="model">Modell</label><input id="model" placeholder="t.ex. Lyseo"></div>
+<div class="field"><label for="year">Årsmodell</label><input id="year" type="number" min="1950" max="2035" placeholder="t.ex. 2021"></div>
+<div class="field"><label for="miles">Miltal (ungefär)</label><input id="miles" type="number" min="0" placeholder="t.ex. 4500"></div>
+</div>
+<div class="actions">
+<button class="primary" onclick="searchWeb()">🔎 Sök avslutade auktioner</button>
+<button class="secondary" onclick="searchMake()">Sök bredare</button>
+<button class="secondary" onclick="clearSearch()">Rensa</button>
+</div>
+<p class="hint">Sökningen öppnar källor i nya flikar med dina sökord ifyllda. Kontrollera att sidan visar ett avslutat objekt och ett faktiskt slutpris – inte aktuellt bud eller utropspris.</p>
+</section>
+<section class="card">
+<h2>2. Lägg till en verifierad försäljning</h2>
+<div class="grid">
+<div class="field"><label for="aMake">Tillverkare *</label><input id="aMake" required placeholder="t.ex. Adria"></div>
+<div class="field"><label for="aModel">Modell *</label><input id="aModel" required placeholder="t.ex. Matrix 670 SL"></div>
+<div class="field"><label for="aYear">Årsmodell</label><input id="aYear" type="number" min="1950" max="2035" placeholder="År"></div>
+<div class="field"><label for="aMiles">Miltal (mil)</label><input id="aMiles" type="number" min="0" placeholder="Miltal"></div>
+<div class="field"><label for="aPrice">Slutpris (kr) *</label><input id="aPrice" type="number" min="0" placeholder="t.ex. 625000"></div>
+<div class="field"><label for="aDate">Försäljningsdatum</label><input id="aDate" type="date"></div>
+<div class="field"><label for="aSource">Källa</label><select id="aSource"><option>Klaravik</option><option>KVD</option><option>Fyndad</option><option>Annat</option></select></div>
+<div class="field"><label for="aUrl">Länk till avslutad auktion</label><input id="aUrl" type="url" placeholder="https://..."></div>
+</div>
+<div class="actions"><button class="gold" onclick="addSale()">＋ Spara försäljning</button><button class="secondary" onclick="exportCSV()">Exportera CSV</button><label class="button secondary" for="importFile">Importera CSV<input id="importFile" type="file" accept=".csv,text/csv" hidden onchange="importCSV(event)"></label></div>
+<p class="hint">Uppgifterna sparas lokalt i den här webbläsaren. Lägg bara in slutpriser som du har kunnat kontrollera.</p>
+</section>
+<section class="card">
+<h2>3. Din prisdatabas</h2>
+<div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+<div class="field"><label for="filterMake">Filtrera tillverkare</label><input id="filterMake" placeholder="Alla" oninput="render()"></div>
+<div class="field"><label for="filterModel">Filtrera modell</label><input id="filterModel" placeholder="Alla" oninput="render()"></div>
+<div class="field"><label for="filterYear">Årsmodell</label><input id="filterYear" type="number" placeholder="Alla" oninput="render()"></div>
+</div>
+<div class="stats" style="margin-top:14px">
+<div class="stat"><small>Antal försäljningar</small><strong id="count">0</strong></div>
+<div class="stat"><small>Median slutpris</small><strong id="median">–</strong></div>
+<div class="stat"><small>Genomsnitt slutpris</small><strong id="average">–</strong></div>
+</div>
+<div class="tablewrap" style="margin-top:14px"><table><thead><tr><th>Husbil</th><th>År</th><th>Miltal</th><th>Slutpris</th><th>Datum / källa</th><th>Åtgärd</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="actions"><button class="secondary" onclick="clearDatabase()">Töm databasen</button></div>
+</section>
+<section class="card">
+<h2>Källor för avslutade försäljningar</h2>
+<div class="actions">
+<a class="button secondary" href="https://fyndad.se/guide/vad-kostar-en-begagnad-husbil" target="_blank" rel="noopener">Fyndad – prisguide</a>
+<a class="button secondary" href="https://www.klaravik.se/auktion/avslutade/fordon/latta-fordon/husbilar-husvagnar/" target="_blank" rel="noopener">Klaravik – avslutade auktioner</a>
+<a class="button secondary" href="https://fyndad.se/" target="_blank" rel="noopener">Fyndad – sök objekt</a>
+<a class="button secondary" href="https://www.kvd.se/" target="_blank" rel="noopener">KVD</a>
+</div>
+<p class="hint">Auktionspriser kan vara exklusive moms, inropsavgift eller andra kostnader. Läs alltid villkoren på objektets källsida.</p>
+</section>
+</main><div class="footer">Husbilskoll · Enkel lokal prisdatabas · Ingen automatisk prisgaranti</div>
+<script>
+const KEY='husbilskoll_sales_v2';
+function getSales(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function saveSales(a){localStorage.setItem(KEY,JSON.stringify(a))}
+function val(id){return document.getElementById(id).value.trim()}
+function q(s){return encodeURIComponent(s)}
+function searchWeb(){
+ let terms=[val('make'),val('model'),val('year')?('årsmodell '+val('year')):'',val('miles')?('mil '+val('miles')):'','husbil slutpris avslutad auktion'].filter(Boolean).join(' ');
+ if(!val('make')&&!val('model')){alert('Fyll i minst tillverkare eller modell först.');return}
+ const queries=[
+  'site:fyndad.se/objekt '+terms+' avslutad slutpris',
+  'site:klaravik.se/auktion/produkt '+terms+' "Vinnande bud"',
+  'site:kvd.se '+terms+' avslutad auktion slutpris'
+ ];
+ queries.forEach((s)=>window.open('https://www.google.com/search?q='+q(s),'_blank','noopener'));
+}
+function searchMake(){
+ let terms=[val('make'),val('model'),val('year')?val('year'):'','husbil såld slutpris auktion'].filter(Boolean).join(' ');
+ if(!val('make')&&!val('model')){alert('Fyll i minst tillverkare eller modell först.');return}
+ window.open('https://www.google.com/search?q='+q(terms),'_blank','noopener');
+ window.open('https://fyndad.se/','_blank','noopener');
+ window.open('https://www.klaravik.se/auktion/avslutade/fordon/latta-fordon/husbilar-husvagnar/','_blank','noopener');
+}
+function clearSearch(){['make','model','year','miles'].forEach(id=>document.getElementById(id).value='')}
+function addSale(){
+ const make=val('aMake'),model=val('aModel'),price=Number(val('aPrice'));
+ if(!make||!model||!val('aPrice')||!Number.isFinite(price)||price<0){alert('Fyll i tillverkare, modell och ett giltigt slutpris.');return}
+ let sales=getSales();
+ sales.push({id:Date.now()+Math.random(),make,model,year:val('aYear'),miles:val('aMiles'),price,date:val('aDate'),source:val('aSource'),url:val('aUrl')});
+ saveSales(sales);['aMake','aModel','aYear','aMiles','aPrice','aDate','aUrl'].forEach(id=>document.getElementById(id).value='');render();
+}
+function fmt(n){return Number(n).toLocaleString('sv-SE',{maximumFractionDigits:0})+' kr'}
+function render(){
+ let m=val('filterMake').toLowerCase(),mo=val('filterModel').toLowerCase(),y=val('filterYear');
+ let sales=getSales().filter(s=>(!m||s.make.toLowerCase().includes(m))&&(!mo||s.model.toLowerCase().includes(mo))&&(!y||String(s.year)===y)).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+ document.getElementById('count').textContent=sales.length;
+ let prices=sales.map(s=>Number(s.price)).filter(n=>Number.isFinite(n)).sort((a,b)=>a-b);
+ let med=prices.length?(prices.length%2?prices[(prices.length-1)/2]:(prices[prices.length/2-1]+prices[prices.length/2])/2):null;
+ document.getElementById('median').textContent=med===null?'–':fmt(med);
+ document.getElementById('average').textContent=prices.length?fmt(prices.reduce((a,b)=>a+b,0)/prices.length):'–';
+ const tbody=document.getElementById('rows');
+ if(!sales.length){tbody.innerHTML='<tr><td colspan="6" class="empty">Inga sparade försäljningar matchar filtret ännu.</td></tr>';return}
+ tbody.innerHTML=sales.map(s=>`<tr><td><b>${esc(s.make)} ${esc(s.model)}</b><br><small>${esc(s.source||'')}</small>${s.url?' · <a href="'+escAttr(s.url)+'" target="_blank" rel="noopener">Källa ↗</a>':''}</td><td>${esc(s.year||'–')}</td><td>${s.miles?Number(s.miles).toLocaleString('sv-SE')+' mil':'–'}</td><td><b>${fmt(s.price)}</b></td><td>${esc(s.date||'–')}</td><td><button class="secondary smallbtn" onclick="removeSale('${s.id}')">Ta bort</button></td></tr>`).join('');
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escAttr(s){return esc(s)}
+function removeSale(id){saveSales(getSales().filter(s=>String(s.id)!==String(id)));render()}
+function clearDatabase(){if(confirm('Vill du verkligen ta bort alla sparade försäljningar?')){saveSales([]);render()}}
+function exportCSV(){
+ let sales=getSales(),headers=['make','model','year','miles','price','date','source','url'];
+ const csv=[headers.join(';'),...sales.map(s=>headers.map(h=>String(s[h]??'').replace(/"/g,'""')).map(v=>'"'+v+'"').join(';'))].join('\r\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='husbilskoll.csv';a.click();URL.revokeObjectURL(a.href)
+}
+function importCSV(e){
+ const file=e.target.files[0];if(!file)return;const reader=new FileReader();
+ reader.onload=()=>{try{const lines=String(reader.result).replace(/^\ufeff/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)throw Error();const parse=line=>{let out=[],cur='',inside=false;for(let i=0;i<line.length;i++){let c=line[i];if(c==='"'&&line[i+1]==='"'&&inside){cur+='"';i++}else if(c==='"')inside=!inside;else if(c===';'&&!inside){out.push(cur);cur=''}else cur+=c}out.push(cur);return out};const heads=parse(lines[0]);let added=parse(lines.slice(1).join('\n'));const imported=lines.slice(1).map(line=>{let a=parse(line),o={id:Date.now()+Math.random()};heads.forEach((h,i)=>o[h]=a[i]||'');o.price=Number(o.price);return o}).filter(s=>s.make&&s.model&&Number.isFinite(s.price));saveSales(getSales().concat(imported));render();alert(imported.length+' rader importerades.')}catch(err){alert('Kunde inte läsa filen. Använd CSV som exporterats från Husbilskoll.')}e.target.value=''};
+ reader.readAsText(file,'UTF-8')
+}
+render();
+</script></body></html>
