@@ -1,279 +1,219 @@
-
-
 <!doctype html>
-
 <html lang="sv">
-
 <head>
-
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="theme-color" content="#152b3c">
-
-<title>Husbilskollen – slutpriser</title>
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Husbilskoll – slutpriser</title>
 <style>
-
-:root{--navy:#152b3c;--blue:#24536b;--gold:#e4b95d;--bg:#f3f6f8;--ink:#17232d;--muted:#657481;--line:#d9e1e7;--white:#fff;--green:#18794e;--red:#a33b35}
-
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-
-header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:26px 18px 30px}
-
-.wrap{max-width:1050px;margin:auto} .brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--gold);color:var(--navy);font-size:25px;font-weight:900}
-
-h1{font-size:clamp(25px,5vw,36px);line-height:1.1;margin:0}header p{color:#e4edf3;margin:12px 0 0;max-width:680px}
-
-main{max-width:1050px;margin:20px auto;padding:0 14px 40px}.notice{padding:12px 14px;background:#fff8e7;border:1px solid #efd99c;border-radius:12px;font-size:14px;margin-bottom:16px}
-
-.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 4px 16px #152b3c08}
-
-h2{font-size:20px;margin:0 0 14px;color:var(--navy)}.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-
-label{display:block;font-size:13px;font-weight:700;color:#42515d;margin-bottom:5px}input,select,textarea{font:inherit;width:100%;min-width:0;padding:11px 12px;border:1px solid #cbd5dc;border-radius:9px;background:#fff;color:var(--ink)}input:focus,select:focus,textarea:focus{outline:2px solid #8ab7d0;border-color:var(--blue)}
-
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:750;font-size:15px;cursor:pointer;background:var(--navy);color:#fff}.btn.gold{background:var(--gold);color:var(--navy)}.btn.light{background:#e8eef2;color:var(--navy)}.btn.danger{background:#f9e9e7;color:var(--red)}.btn:active{transform:translateY(1px)}
-
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.stat{background:#f5f8fa;border:1px solid var(--line);padding:12px;border-radius:12px}.stat small{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:21px;color:var(--navy);margin-top:3px}
-
-.results-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}.count{color:var(--muted);font-size:14px}
-
-.listing{border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;background:#fff}.listing-top{display:flex;justify-content:space-between;gap:10px;align-items:start}.listing h3{margin:0;font-size:17px;color:var(--navy)}.price{font-size:21px;font-weight:850;white-space:nowrap}.meta{color:#53636f;font-size:14px;margin:7px 0}.tag{display:inline-block;border-radius:5px;background:#edf2f5;padding:3px 7px;font-size:12px;margin:2px 3px 0 0}.source{font-size:13px;color:var(--muted);overflow-wrap:anywhere}.source a{color:#205d80}.empty{padding:24px 10px;text-align:center;color:var(--muted)}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.formgrid .wide{grid-column:span 2}.foot{font-size:13px;color:var(--muted);padding:0 4px}
-
-@media(max-width:720px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid .wide{grid-column:span 2}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.listing-top{display:block}.price{margin-top:5px}}
-
-@media(max-width:420px){.filters,.formgrid{grid-template-columns:1fr}.formgrid .wide{grid-column:auto}.card{padding:14px}.actions .btn{flex:1}}
-
-</style>
-
-</head>
-
+:root{--navy:#152b3c;--blue:#24536b;--gold:#e4b95d;--bg:#f3f6f8;--ink:#1d2933;--muted:#667784;--line:#dbe3e8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+header{background:linear-gradient(120deg,#122637,#24536b);color:#fff;padding:28px 18px}header .wrap,main{max-width:1100px;margin:auto}h1{margin:0;font-size:clamp(25px,4vw,36px)}header p{margin:8px 0 0;color:#d9e6ed}
+main{padding:18px;display:grid;gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px #132b3b0a}
+h2{font-size:19px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:13px;font-weight:650;color:#41515d}input,select{width:100%;border:1px solid #cbd6dd;border-radius:9px;padding:11px 10px;background:#fff;font:inherit;min-width:0}button,.button{border:0;border-radius:9px;padding:11px 14px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--navy);color:white}.secondary{background:#eaf0f4;color:var(--navy)}.gold{background:var(--gold);color:#2b2b2b}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.hint{font-size:13px;color:var(--muted);margin:10px 0 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:13px;background:#f5f8fa;border-radius:11px}.stat small{display:block;color:var(--muted)}.stat strong{font-size:23px;display:block;margin-top:3px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:750px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#60717e;background:#f8fafb}td a{color:#185e83}.empty{text-align:center;color:var(--muted);padding:24px}.pill{display:inline-block;padding:3px 8px;border-radius:20px;background:#e8f3ec;color:#24653e;font-size:12px;font-weight:700}.warning{background:#fff7e4;border:1px solid #f0d58d;padding:12px;border-radius:10px;font-size:13px}.danger{color:#a23434}.smallbtn{padding:6px 9px;font-size:12px}.footer{font-size:12px;color:var(--muted);text-align:center;padding:4px 12px 24px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}.card{padding:14px}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+</style></head>
 <body>
-
-<header><div class="wrap">
-
-  <div class="brand"><div class="logo">H</div><div><h1>Husbilskollen</h1><div style="color:#e4edf3">Jämför husbilar och följ prisbilden</div></div></div>
-
-  <p>Sök och jämför prisuppgifter efter tillverkare, modell, årsmodell och mätarställning. Lägg in egna prisobservationer så bygger du upp ett eget underlag.</p>
-
-</div></header>
-
+<header><div class="wrap"><h1>🚐 Husbilskoll</h1><p>Sök efter avslutade auktioner och bygg din egen databas med verkliga slutpriser.</p></div></header>
 <main>
-
-<div class="notice"><strong>Viktigt om slutpriser:</strong> Exempelposterna nedan är tydligt märkta som demo och är inte verifierade försäljningspriser. Husbilskollen hämtar inte automatiskt data från annonssajter eller auktionsregister. Lägg in verifierade uppgifter och ange källa för att skapa ett användbart underlag.</div>
-
 <section class="card">
-
-<h2>1. Sök bland prisuppgifter</h2>
-
-<div class="filters">
-
-<div><label for="maker">Tillverkare</label><select id="maker"><option value="">Alla tillverkare</option></select></div>
-
-<div><label for="model">Modell</label><input id="model" placeholder="T.ex. T 690"></div>
-
-<div><label for="yearFrom">Årsmodell från</label><input id="yearFrom" type="number" min="1980" max="2035" placeholder="2018"></div>
-
-<div><label for="yearTo">Årsmodell till</label><input id="yearTo" type="number" min="1980" max="2035" placeholder="2025"></div>
-
-<div><label for="kmFrom">Miltal från (mil)</label><input id="kmFrom" type="number" min="0" placeholder="0"></div>
-
-<div><label for="kmTo">Miltal till (mil)</label><input id="kmTo" type="number" min="0" placeholder="8000"></div>
-
-<div><label for="priceFrom">Pris från (kr)</label><input id="priceFrom" type="number" min="0" step="1000" placeholder="300000"></div>
-
-<div><label for="priceTo">Pris till (kr)</label><input id="priceTo" type="number" min="0" step="1000" placeholder="1200000"></div>
-
+<h2>1. Sök på webben</h2>
+<div class="grid">
+<div class="field"><label for="make">Tillverkare</label><input id="make" list="makeOptions" placeholder="Välj eller skriv tillverkare" autocomplete="off"><datalist id="makeOptions"></datalist></div>
+<div class="field"><label for="model">Modell</label><input id="model" list="modelOptions" placeholder="Välj eller skriv modell" autocomplete="off"><datalist id="modelOptions"></datalist></div>
+<div class="field"><label for="year">Årsmodell</label><input id="year" type="number" min="1950" max="2035" placeholder="t.ex. 2021"></div>
+<div class="field"><label for="miles">Miltal (ungefär)</label><input id="miles" type="number" min="0" placeholder="t.ex. 4500"></div>
 </div>
-
-<div class="actions"><button class="btn gold" id="searchBtn">Sök</button><button class="btn light" id="resetBtn">Rensa filter</button><button class="btn light" id="exportBtn">Exportera CSV</button></div>
-
-</section>
-
-<section class="card">
-
-<div class="stats">
-
-<div class="stat"><small>Antal träffar</small><strong id="statCount">0</strong></div>
-
-<div class="stat"><small>Genomsnittligt pris</small><strong id="statAverage">–</strong></div>
-
-<div class="stat"><small>Medianpris</small><strong id="statMedian">–</strong></div>
-
+<div class="actions">
+<button class="primary" onclick="searchWeb()">🔎 Sök avslutade auktioner</button>
+<button class="secondary" onclick="searchMake()">Sök bredare</button>
+<button class="secondary" onclick="clearSearch()">Rensa</button>
 </div>
-
-<div class="results-head"><h2 style="margin:0">Prisuppgifter</h2><span class="count" id="resultCount"></span></div>
-
-<div id="results" aria-live="polite"></div>
-
+<div id="searchResults" style="display:none;margin-top:14px"></div><p class="hint">Sökningen visar länkar här på sidan i stället för att öppna popup-fönster. Tryck på en länk för att öppna sökningen och kontrollera att träffen visar ett faktiskt slutpris.</p>
 </section>
-
 <section class="card">
-
-<h2>2. Lägg till en prisuppgift</h2>
-
-<p style="margin-top:-5px;color:var(--muted);font-size:14px">Använd till exempel ett verifierat auktionsresultat eller ett faktiskt slutpris. Uppgifterna sparas i den här webbläsaren på din enhet.</p>
-
-<form id="addForm">
-
-<div class="formgrid">
-
-<div><label for="addMaker">Tillverkare *</label><input id="addMaker" required placeholder="T.ex. Adria"></div>
-
-<div><label for="addModel">Modell *</label><input id="addModel" required placeholder="T.ex. Matrix 670 SL"></div>
-
-<div><label for="addYear">Årsmodell *</label><input id="addYear" required type="number" min="1980" max="2035" placeholder="2021"></div>
-
-<div><label for="addKm">Miltal (mil) *</label><input id="addKm" required type="number" min="0" placeholder="4500"></div>
-
-<div><label for="addPrice">Slutpris (kr) *</label><input id="addPrice" required type="number" min="1" step="1000" placeholder="750000"></div>
-
-<div><label for="addDate">Försäljningsdatum</label><input id="addDate" type="date"></div>
-
-<div class="wide"><label for="addSource">Källa / länk</label><input id="addSource" type="url" placeholder="https://..."></div>
-
-<div><label for="addNotes">Anteckning</label><input id="addNotes" placeholder="Skick, utrustning, växellåda…"></div>
-
+<h2>2. Lägg till en verifierad försäljning</h2>
+<div class="grid">
+<div class="field"><label for="aMake">Tillverkare *</label><input id="aMake" required placeholder="t.ex. Adria"></div>
+<div class="field"><label for="aModel">Modell *</label><input id="aModel" required placeholder="t.ex. Matrix 670 SL"></div>
+<div class="field"><label for="aYear">Årsmodell</label><input id="aYear" type="number" min="1950" max="2035" placeholder="År"></div>
+<div class="field"><label for="aMiles">Miltal (mil)</label><input id="aMiles" type="number" min="0" placeholder="Miltal"></div>
+<div class="field"><label for="aPrice">Slutpris (kr) *</label><input id="aPrice" type="number" min="0" placeholder="t.ex. 625000"></div>
+<div class="field"><label for="aDate">Försäljningsdatum</label><input id="aDate" type="date"></div>
+<div class="field"><label for="aSource">Källa</label><select id="aSource"><option>Klaravik</option><option>KVD</option><option>Fyndad</option><option>Annat</option></select></div>
+<div class="field"><label for="aUrl">Länk till avslutad auktion</label><input id="aUrl" type="url" placeholder="https://..."></div>
 </div>
-
-<div class="actions"><button class="btn" type="submit">Spara prisuppgift</button></div>
-
-</form>
-
+<div class="actions"><button class="gold" onclick="addSale()">＋ Spara försäljning</button><button class="secondary" onclick="exportCSV()">Exportera CSV</button><label class="button secondary" for="importFile">Importera CSV<input id="importFile" type="file" accept=".csv,text/csv" hidden onchange="importCSV(event)"></label></div>
+<p class="hint">Uppgifterna sparas lokalt i den här webbläsaren. Lägg bara in slutpriser som du har kunnat kontrollera.</p>
 </section>
-
 <section class="card">
-
-<h2>3. Hantera dina uppgifter</h2>
-
-<p style="margin-top:-5px;color:var(--muted);font-size:14px">Egna poster sparas lokalt i webbläsaren. De följer inte automatiskt med till andra mobiler eller datorer.</p>
-
-<div class="actions"><button class="btn light" id="demoBtn">Lägg till demoposter</button><button class="btn danger" id="clearBtn">Ta bort alla egna poster</button></div>
-
+<h2>3. Din prisdatabas</h2>
+<div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+<div class="field"><label for="filterMake">Filtrera tillverkare</label><input id="filterMake" placeholder="Alla" oninput="render()"></div>
+<div class="field"><label for="filterModel">Filtrera modell</label><input id="filterModel" placeholder="Alla" oninput="render()"></div>
+<div class="field"><label for="filterYear">Årsmodell</label><input id="filterYear" type="number" placeholder="Alla" oninput="render()"></div>
+</div>
+<div class="stats" style="margin-top:14px">
+<div class="stat"><small>Antal försäljningar</small><strong id="count">0</strong></div>
+<div class="stat"><small>Median slutpris</small><strong id="median">–</strong></div>
+<div class="stat"><small>Genomsnitt slutpris</small><strong id="average">–</strong></div>
+</div>
+<div class="tablewrap" style="margin-top:14px"><table><thead><tr><th>Husbil</th><th>År</th><th>Miltal</th><th>Slutpris</th><th>Datum / källa</th><th>Åtgärd</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="actions"><button class="secondary" onclick="clearDatabase()">Töm databasen</button></div>
 </section>
-
-<p class="foot">Husbilskollen är ett enkelt jämförelseverktyg, inte en officiell värdering. Pris påverkas bland annat av skick, motor, planlösning, utrustning och säsong. Kontrollera alltid originalkällan.</p>
-
-</main>
-
+<section class="card">
+<h2>Källor för avslutade försäljningar</h2>
+<div class="actions">
+<a class="button secondary" href="https://fyndad.se/guide/vad-kostar-en-begagnad-husbil" target="_blank" rel="noopener noreferrer">Fyndad – prisguide</a>
+<a class="button secondary" href="https://www.klaravik.se/auktion/avslutade/fordon/latta-fordon/husbilar-husvagnar/" target="_blank" rel="noopener noreferrer">Klaravik – avslutade auktioner</a>
+<a class="button secondary" href="https://fyndad.se/" target="_blank" rel="noopener noreferrer">Fyndad – sök objekt</a>
+<a class="button secondary" href="https://www.kvd.se/" target="_blank" rel="noopener noreferrer">KVD</a>
+</div>
+<p class="hint">Auktionspriser kan vara exklusive moms, inropsavgift eller andra kostnader. Läs alltid villkoren på objektets källsida.</p>
+</section>
+</main><div class="footer">Husbilskoll · Enkel lokal prisdatabas · Ingen automatisk prisgaranti</div>
 <script>
-
-(function(){
-
 'use strict';
-
-const KEY='husbilskollen_v1';
-
-const demos=[
-
-{id:'demo1',maker:'Adria',model:'Matrix 670 SL',year:2021,km:4200,price:799000,date:'',source:'',notes:'Demo – ej verifierat slutpris',demo:true},
-
-{id:'demo2',maker:'Bürstner',model:'Lyseo TD 690 G',year:2020,km:5100,price:729000,date:'',source:'',notes:'Demo – ej verifierat slutpris',demo:true},
-
-{id:'demo3',maker:'Kabe',model:'Travel Master 780',year:2019,km:6400,price:895000,date:'',source:'',notes:'Demo – ej verifierat slutpris',demo:true},
-
-{id:'demo4',maker:'Sunlight',model:'T 68',year:2022,km:2800,price:749000,date:'',source:'',notes:'Demo – ej verifierat slutpris',demo:true},
-
-{id:'demo5',maker:'Bürstner',model:'Elegance',year:2018,km:7200,price:685000,date:'',source:'',notes:'Demo – ej verifierat slutpris',demo:true}
-
-];
-
-let own=[];
-
-try{own=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(own))own=[];}catch(e){own=[];}
-
-let filtered=[];
-
-const $=id=>document.getElementById(id);
-
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-const all=()=>demos.concat(own);
-
-const money=n=>new Intl.NumberFormat('sv-SE',{style:'currency',currency:'SEK',maximumFractionDigits:0}).format(n);
-
-function save(){try{localStorage.setItem(KEY,JSON.stringify(own));}catch(e){alert('Webbläsaren kunde inte spara uppgiften. Kontrollera inställningarna för webbplatsdata.');}}
-
-function populateMakers(){const sel=$('maker'),val=sel.value;const names=[...new Set(all().map(x=>x.maker).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'sv'));sel.innerHTML='<option value="">Alla tillverkare</option>'+names.map(n=>'<option>'+esc(n)+'</option>').join('');sel.value=names.includes(val)?val:'';}
-
-function search(){
-
- const maker=$('maker').value.toLowerCase(),model=$('model').value.trim().toLowerCase();
-
- const yf=Number($('yearFrom').value)||0,yt=Number($('yearTo').value)||9999,kf=$('kmFrom').value===''?0:Number($('kmFrom').value),kt=$('kmTo').value===''?Infinity:Number($('kmTo').value),pf=$('priceFrom').value===''?0:Number($('priceFrom').value),pt=$('priceTo').value===''?Infinity:Number($('priceTo').value);
-
- filtered=all().filter(x=>(!maker||x.maker.toLowerCase()===maker)&&(!model||(x.model+' '+x.maker).toLowerCase().includes(model))&&x.year>=yf&&x.year<=yt&&x.km>=kf&&x.km<=kt&&x.price>=pf&&x.price<=pt).sort((a,b)=>b.year-a.year||a.price-b.price);
-
- render();
-
+const KEY='husbilskoll_sales_v2';
+function getSales(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function saveSales(a){try{localStorage.setItem(KEY,JSON.stringify(a));return true}catch(e){alert('Kunde inte spara lokalt. Kontrollera webbläsarens lagringsinställningar.');return false}}
+function val(id){return document.getElementById(id).value.trim()}
+function q(s){return encodeURIComponent(s)}
+// Förslag på vanliga europeiska husbilstillverkare och modellserier.
+// Fälten är fortfarande fritext, så egna eller nyare modeller kan skrivas in.
+const CATALOG={
+ 'Adria':['Coral','Matrix','Sonic','Compact','Twin','Supersonic','Compact Max','Coral XL'],
+ 'Ahorn':['Camp','Canada','Alaska','Eco'],
+ 'Auto-Trail':['F-Line','Imala','Tracker','Apache','Frontier','V-Line'],
+ 'Bailey':['Autograph','Adamo','Advance','Alliance'],
+ 'Benimar':['Tessoro','Mileo','Amphitryon','Cocoon','Sport'],
+ 'Bürstner':['Lyseo','Ixeo','Elegance','Nexxo','Travel Van','Campeo','Eliseo','Lineo'],
+ 'Carado':['T-Series','A-Series','V-Series','I-Series','CV'],
+ 'Challenger':['X','S','MAGEO','GRAPHITE','ETAPE','VANY'],
+ 'Chausson':['Titanium','Welcome','Flash','S','X','V594'],
+ 'CI':['Elliot','Magis','Horon','Kyros'],
+ 'Concorde':['Charisma','Credo','Carver','Centurion','Liner'],
+ 'Dethleffs':['Trend','Pulse','Just Camp','Globebus','Esprit','Alpa','XL Family','Globetrotter'],
+ 'Dreamer':['D43','D55','D68','Family Van','Select'],
+ 'Elddis':['Autoquest','Accordo','Encore','Chatsworth'],
+ 'Etrusco':['T-Series','A-Series','V-Series','I-Series','CV'],
+ 'Eura Mobil':['Activa One','Profila T','Profila RS','Integra Line','Integra','Contura'],
+ 'Fleurette':['Migrateur','Discover','Magister','Florium Wincester'],
+ 'Frankia':['Neo','Platin','Titan','I-Series','F-Line'],
+ 'Giottiline':['Therry','Siena','GiottiVan'],
+ 'Globe-Traveller':['Explorer','Voyager','Pathfinder'],
+ 'Hobby':['Optima Ontour','Optima De Luxe','Prestige T','Vantana'],
+ 'Hymer':['B-Class','ML-T','Exsis-t','Exsis-i','Tramp S','Tramp','Free','Grand Canyon S'],
+ 'Itineo':['Cozi','Famili','Nomad','PS'],
+ 'Joa Camp':['Joa','Joa Camp 60G'],
+ 'Kabe':['Travel Master','TM','Classic','Royal','Imperial'],
+ 'Karmann Mobil':['Dexter','Davis','Columbus'],
+ 'Knaus':['Sky TI','Sky Wave','Van TI','Live TI','L!VE WAVE','BoxLife','BoxStar','Sun I'],
+ 'Laika':['Kosmo','Ecovip','Kreos','Kosmo Camper Van'],
+ 'Le Voyageur':['Classic','LV','Signature'],
+ 'Malibu':['T','I','Van','Charming','Compact'],
+ 'McLouis':['Mc4','Nevis','Glamys','Menfys'],
+ 'Mobilvetta':['K-Yacht','Kea','Tekno Line'],
+ 'Morelo':['Home','Loft','Palace','Empire','Grand Empire'],
+ 'Niesmann+Bischoff':['iSmove','Arto','Flair'],
+ 'Notin':['Lugo','Furio','Progress','Volga'],
+ 'Phoenix':['Midi-Liner','Maxi-Liner','Top-Liner'],
+ 'Pilote':['Atlas','P600','P700','P740','Pacific','Galaxy','G740','G720'],
+ 'Pössl':['2Win','Roadcamp','Summit','Trenta','Roadstar'],
+ 'Rapido':['C-Series','700','9000','Distinction','M-Series','V-Series'],
+ 'Randger':['R540','R560','R600','R640'],
+ 'Rimor':['Evo','Seal','Horus','Kilig'],
+ 'Roller Team':['Zefiro','Kronos','Livingstone','Pegaso'],
+ 'Sunlight':['T-Series','A-Series','V-Series','I-Series','Cliff','Cliff Adventure'],
+ 'Sun Living':['S-Series','A-Series','V-Series','C-Series'],
+ 'Swift':['Escape','Voyager','Kon-Tiki','Trekker'],
+ 'Weinsberg':['CaraSuite','CaraCore','CaraCompact','CaraLoft','CaraBus','CaraTour'],
+ 'Westfalia':['James Cook','Columbus','Kepler','Amundsen'],
+ 'Burstner':['Lyseo','Ixeo','Nexxo','Campeo','Eliseo'],
+ 'Bürstner':['Lyseo','Ixeo','Nexxo','Campeo','Eliseo']
+};
+function fillMakeOptions(){
+ const list=document.getElementById('makeOptions');
+ list.innerHTML=Object.keys(CATALOG).filter((v,i,a)=>a.indexOf(v)===i).sort((a,b)=>a.localeCompare(b,'sv')).map(m=>'<option value="'+escAttr(m)+'"></option>').join('');
+ updateModelOptions();
 }
-
+function updateModelOptions(){
+ const make=val('make').toLocaleLowerCase('sv');
+ const entry=Object.entries(CATALOG).find(([name])=>name.toLocaleLowerCase('sv')===make);
+ const models=entry?entry[1]:[];
+ document.getElementById('modelOptions').innerHTML=models.map(m=>'<option value="'+escAttr(m)+'"></option>').join('');
+}
+document.getElementById('make').addEventListener('input',updateModelOptions);
+fillMakeOptions();
+function searchWeb(){
+ const make=val('make'),model=val('model'),year=val('year'),miles=val('miles');
+ if(!make&&!model){alert('Fyll i minst tillverkare eller modell först.');return}
+ const terms=[make,model,year?('årsmodell '+year):'',miles?('mil '+miles):'','husbil slutpris avslutad auktion'].filter(Boolean).join(' ');
+ const queries=[
+  {name:'Google – Fyndad',url:'https://www.google.com/search?q='+q('site:fyndad.se '+terms+' slutpris')},
+  {name:'Google – Klaravik',url:'https://www.google.com/search?q='+q('site:klaravik.se '+terms+' "vinnande bud"')},
+  {name:'Google – KVD',url:'https://www.google.com/search?q='+q('site:kvd.se '+terms+' slutpris auktion')},
+  {name:'Google – bred sökning',url:'https://www.google.com/search?q='+q(terms)},
+  {name:'Fyndad – öppna webbplatsen',url:'https://fyndad.se/'},
+  {name:'Klaravik – avslutade husbilsauktioner',url:'https://www.klaravik.se/auktion/avslutade/fordon/latta-fordon/husbilar-husvagnar/'},
+  {name:'KVD – öppna webbplatsen',url:'https://www.kvd.se/'}
+ ];
+ const box=document.getElementById('searchResults');
+ box.style.display='block';
+ box.innerHTML='<h3 style="margin:0 0 8px">Sökresultat – välj en länk</h3><p class="hint">Söklänkarna är klara. Tryck på en av dem för att öppna sidan.</p><div class="actions">'+queries.map(x=>'<a class="button secondary" style="text-align:left" href="'+escAttr(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.name)+' ↗</a>').join('')+'</div>';
+ box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function searchMake(){if(!val('make')&&!val('model')){alert('Fyll i minst tillverkare eller modell först.');return}searchWeb()}
+function clearSearch(){['make','model','year','miles'].forEach(id=>document.getElementById(id).value='');document.getElementById('searchResults').style.display='none'}
+function addSale(){
+ const make=val('aMake'),model=val('aModel'),priceText=val('aPrice'),price=Number(priceText);
+ if(!make||!model||!priceText||!Number.isFinite(price)||price<0){alert('Fyll i tillverkare, modell och ett giltigt slutpris.');return}
+ const sales=getSales();
+ sales.push({id:String(Date.now())+'-'+Math.random().toString(36).slice(2),make,model,year:val('aYear'),miles:val('aMiles'),price,date:val('aDate'),source:val('aSource'),url:val('aUrl')});
+ if(!saveSales(sales))return;
+ ['aMake','aModel','aYear','aMiles','aPrice','aDate','aUrl'].forEach(id=>document.getElementById(id).value='');render();
+}
+function fmt(n){return Number(n).toLocaleString('sv-SE',{maximumFractionDigits:0})+' kr'}
 function render(){
-
- $('statCount').textContent=filtered.length;
-
- const prices=filtered.map(x=>Number(x.price)).filter(n=>Number.isFinite(n)&&n>0).sort((a,b)=>a-b);
-
- $('statAverage').textContent=prices.length?money(Math.round(prices.reduce((a,b)=>a+b,0)/prices.length)):'–';
-
- $('statMedian').textContent=prices.length?money(prices.length%2?prices[(prices.length-1)/2]:Math.round((prices[prices.length/2-1]+prices[prices.length/2])/2)):'–';
-
- $('resultCount').textContent=filtered.length+' prisuppgift(er)';
-
- if(!filtered.length){$('results').innerHTML='<div class="empty">Inga träffar. Ändra filtren eller lägg till en prisuppgift längre ner.</div>';return;}
-
- $('results').innerHTML=filtered.map(x=>'<article class="listing"><div class="listing-top"><div><h3>'+esc(x.maker)+' '+esc(x.model)+'</h3><div class="meta">Årsmodell '+esc(x.year)+' · '+new Intl.NumberFormat('sv-SE').format(x.km)+' mil'+(x.date?' · Datum '+esc(x.date):'')+'</div></div><div class="price">'+money(x.price)+'</div></div><div>'+(x.demo?'<span class="tag">DEMO – ej verifierat</span>':'<span class="tag">Egen prisuppgift</span>')+(x.notes?'<span class="tag">'+esc(x.notes)+'</span>':'')+'</div>'+(x.source?'<div class="source">Källa: <a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">'+esc(x.source)+'</a></div>':'')+(x.demo?'':'<div class="actions"><button class="btn danger" data-delete="'+esc(x.id)+'">Ta bort uppgift</button></div>')+'</article>').join('');
-
+ const m=val('filterMake').toLowerCase(),mo=val('filterModel').toLowerCase(),y=val('filterYear');
+ const sales=getSales().filter(s=>(!m||String(s.make||'').toLowerCase().includes(m))&&(!mo||String(s.model||'').toLowerCase().includes(mo))&&(!y||String(s.year||'')===y)).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+ document.getElementById('count').textContent=sales.length;
+ const prices=sales.map(s=>Number(s.price)).filter(n=>Number.isFinite(n)).sort((a,b)=>a-b);
+ const med=prices.length?(prices.length%2?prices[(prices.length-1)/2]:(prices[prices.length/2-1]+prices[prices.length/2])/2):null;
+ document.getElementById('median').textContent=med===null?'–':fmt(med);
+ document.getElementById('average').textContent=prices.length?fmt(prices.reduce((a,b)=>a+b,0)/prices.length):'–';
+ const tbody=document.getElementById('rows');
+ if(!sales.length){tbody.innerHTML='<tr><td colspan="6" class="empty">Inga sparade försäljningar matchar filtret ännu.</td></tr>';return}
+ tbody.innerHTML=sales.map(s=>`<tr><td><b>${esc(s.make)} ${esc(s.model)}</b><br><small>${esc(s.source||'')}</small>${s.url?' · <a href="'+escAttr(s.url)+'" target="_blank" rel="noopener noreferrer">Källa ↗</a>':''}</td><td>${esc(s.year||'–')}</td><td>${s.miles?Number(s.miles).toLocaleString('sv-SE')+' mil':'–'}</td><td><b>${fmt(s.price)}</b></td><td>${esc(s.date||'–')}</td><td><button class="secondary smallbtn" onclick="removeSale('${escAttr(s.id)}')">Ta bort</button></td></tr>`).join('');
 }
-
-$('searchBtn').addEventListener('click',search);
-
-$('resetBtn').addEventListener('click',()=>{['model','yearFrom','yearTo','kmFrom','kmTo','priceFrom','priceTo'].forEach(id=>$(id).value='');$('maker').value='';search();});
-
-['maker','model','yearFrom','yearTo','kmFrom','kmTo','priceFrom','priceTo'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();search();}}));
-
-$('results').addEventListener('click',e=>{const b=e.target.closest('[data-delete]');if(!b)return;own=own.filter(x=>x.id!==b.dataset.delete);save();populateMakers();search();});
-
-$('addForm').addEventListener('submit',e=>{
-
- e.preventDefault();
-
- const maker=$('addMaker').value.trim(),model=$('addModel').value.trim(),year=Number($('addYear').value),km=Number($('addKm').value),price=Number($('addPrice').value);
-
- if(!maker||!model||!year||!Number.isFinite(km)||!price){alert('Fyll i alla obligatoriska fält.');return;}
-
- const source=$('addSource').value.trim();
-
- if(source){try{const u=new URL(source);if(!['http:','https:'].includes(u.protocol))throw Error();}catch(err){alert('Ange en giltig webbadress som börjar med https://');return;}}
-
- own.push({id:'p'+Date.now()+Math.random().toString(16).slice(2,6),maker,model,year,km,price,date:$('addDate').value,source,notes:$('addNotes').value.trim(),demo:false});
-
- save();e.target.reset();populateMakers();search();alert('Prisuppgiften är sparad i den här webbläsaren.');
-
-});
-
-$('demoBtn').addEventListener('click',()=>{if(!confirm('Lägga tillbaka demoposterna? De är exempel, inte verifierade slutpriser.'))return;demos.forEach(d=>{if(!demos.some(z=>z.id===d.id))demos.push(d);});search();});
-
-$('clearBtn').addEventListener('click',()=>{if(!confirm('Ta bort alla egna prisuppgifter från den här webbläsaren? Detta går inte att ångra.'))return;own=[];save();populateMakers();search();});
-
-$('exportBtn').addEventListener('click',()=>{
-
- const rows=[['Tillverkare','Modell','Årsmodell','Miltal','Pris SEK','Försäljningsdatum','Källa','Anteckning','Typ'],...filtered.map(x=>[x.maker,x.model,x.year,x.km,x.price,x.date||'',x.source||'',x.notes||'',x.demo?'Demo – ej verifierat':'Egen prisuppgift'])];
-
- const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');
-
- const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='husbilskollen-prisuppgifter.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
-
-});
-
-populateMakers();search();
-
-})();
-
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escAttr(s){return esc(s)}
+function removeSale(id){saveSales(getSales().filter(s=>String(s.id)!==String(id)));render()}
+function clearDatabase(){if(confirm('Vill du verkligen ta bort alla sparade försäljningar?')){if(saveSales([]))render()}}
+function exportCSV(){
+ const sales=getSales(),headers=['make','model','year','miles','price','date','source','url'];
+ const csv=[headers.join(';'),...sales.map(s=>headers.map(h=>String(s[h]??'').replace(/"/g,'""')).map(v=>'"'+v+'"').join(';'))].join('\r\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='husbilskoll.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function importCSV(e){
+ const file=e.target.files&&e.target.files[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const lines=String(reader.result).replace(/^\ufeff/,'').split(/\r?\n/).filter(Boolean);
+   if(lines.length<2)throw new Error('Tom fil');
+   const parse=line=>{const out=[];let cur='',inside=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&line[i+1]==='"'&&inside){cur+='"';i++}else if(c==='"')inside=!inside;else if(c===';'&&!inside){out.push(cur);cur=''}else cur+=c}out.push(cur);return out};
+   const heads=parse(lines[0]).map(h=>h.trim());
+   const imported=lines.slice(1).map(line=>{const a=parse(line),o={id:String(Date.now())+'-'+Math.random().toString(36).slice(2)};heads.forEach((h,i)=>o[h]=a[i]||'');o.price=Number(o.price);return o}).filter(s=>s.make&&s.model&&Number.isFinite(s.price)&&s.price>=0);
+   if(!imported.length)throw new Error('Inga giltiga rader');
+   if(!saveSales(getSales().concat(imported)))return;
+   render();alert(imported.length+' rader importerades.');
+  }catch(err){alert('Kunde inte läsa filen. Använd en CSV-fil exporterad från Husbilskoll.')}
+  e.target.value='';
+ };
+ reader.onerror=()=>{alert('Filen kunde inte läsas.');e.target.value=''};
+ reader.readAsText(file,'UTF-8');
+}
+render();
 </script>
-
-</body>
-
-</html>
+</body></html>
