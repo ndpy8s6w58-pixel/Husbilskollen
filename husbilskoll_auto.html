@@ -28,7 +28,7 @@ h2{font-size:19px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repea
 <button class="secondary" onclick="searchMake()">Sök bredare</button>
 <button class="secondary" onclick="clearSearch()">Rensa</button>
 </div>
-<p class="hint">Sökningen öppnar källor i nya flikar med dina sökord ifyllda. Kontrollera att sidan visar ett avslutat objekt och ett faktiskt slutpris – inte aktuellt bud eller utropspris.</p>
+<div id="searchResults" style="display:none;margin-top:14px"></div><p class="hint">Sökningen visar länkar här på sidan i stället för att öppna popup-fönster. Tryck på en länk för att öppna sökningen och kontrollera att träffen visar ett faktiskt slutpris.</p>
 </section>
 <section class="card">
 <h2>2. Lägg till en verifierad försäljning</h2>
@@ -78,21 +78,26 @@ function saveSales(a){localStorage.setItem(KEY,JSON.stringify(a))}
 function val(id){return document.getElementById(id).value.trim()}
 function q(s){return encodeURIComponent(s)}
 function searchWeb(){
- let terms=[val('make'),val('model'),val('year')?('årsmodell '+val('year')):'',val('miles')?('mil '+val('miles')):'','husbil slutpris avslutad auktion'].filter(Boolean).join(' ');
- if(!val('make')&&!val('model')){alert('Fyll i minst tillverkare eller modell först.');return}
+ let make=val('make'), model=val('model'), year=val('year'), miles=val('miles');
+ if(!make&&!model){alert('Fyll i minst tillverkare eller modell först.');return}
+ let terms=[make,model,year?('årsmodell '+year):'',miles?('mil '+miles):'','husbil slutpris avslutad auktion'].filter(Boolean).join(' ');
  const queries=[
-  'site:fyndad.se/objekt '+terms+' avslutad slutpris',
-  'site:klaravik.se/auktion/produkt '+terms+' "Vinnande bud"',
-  'site:kvd.se '+terms+' avslutad auktion slutpris'
+  {name:'Google – Fyndad',url:'https://www.google.com/search?q='+q('site:fyndad.se '+terms+' slutpris')},
+  {name:'Google – Klaravik',url:'https://www.google.com/search?q='+q('site:klaravik.se '+terms+' "vinnande bud"')},
+  {name:'Google – KVD',url:'https://www.google.com/search?q='+q('site:kvd.se '+terms+' slutpris auktion')},
+  {name:'Google – bred sökning',url:'https://www.google.com/search?q='+q(terms)},
+  {name:'Fyndad – öppna webbplatsen',url:'https://fyndad.se/'},
+  {name:'Klaravik – avslutade husbilsauktioner',url:'https://www.klaravik.se/auktion/avslutade/fordon/latta-fordon/husbilar-husvagnar/'},
+  {name:'KVD – öppna webbplatsen',url:'https://www.kvd.se/'}
  ];
- queries.forEach((s)=>window.open('https://www.google.com/search?q='+q(s),'_blank','noopener'));
+ const box=document.getElementById('webResults');
+ box.style.display='block';
+ box.innerHTML='<h3 style="margin:0 0 8px">Sökresultat – välj en länk</h3><p class="hint">Söklänkarna är klara. Tryck på en av dem för att öppna sidan.</p><div class="actions">'+queries.map(x=>'<a class="button secondary" style="text-align:left" href="'+escAttr(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.name)+' ↗</a>').join('')+'</div>';
+ box.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function searchMake(){
- let terms=[val('make'),val('model'),val('year')?val('year'):'','husbil såld slutpris auktion'].filter(Boolean).join(' ');
  if(!val('make')&&!val('model')){alert('Fyll i minst tillverkare eller modell först.');return}
- window.open('https://www.google.com/search?q='+q(terms),'_blank','noopener');
- window.open('https://fyndad.se/','_blank','noopener');
- window.open('https://www.klaravik.se/auktion/avslutade/fordon/latta-fordon/husbilar-husvagnar/','_blank','noopener');
+ searchWeb();
 }
 function clearSearch(){['make','model','year','miles'].forEach(id=>document.getElementById(id).value='')}
 function addSale(){
